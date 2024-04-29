@@ -259,15 +259,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/04/29/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98,%E4%BD%BF%E7%94%A8%E7%BD%91%E5%85%B3%EF%BC%88Nginx%EF%BC%89%E6%94%AF%E6%8C%81%E6%88%96%E4%BF%AE%E6%94%B9%E5%90%8E%E7%AB%AF%E4%BB%A3%E7%A0%81/" target="_self">
-          
+        <a href="/2024/04/29/%E4%BD%BF%E7%94%A8Nginx%E6%88%96%E4%BF%AE%E6%94%B9%E5%90%8E%E7%AB%AF%E4%BB%A3%E7%A0%81%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/" target="_self">
+          使用Nginx或修改后端代码解决跨域问题
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/29/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98,%E4%BD%BF%E7%94%A8%E7%BD%91%E5%85%B3%EF%BC%88Nginx%EF%BC%89%E6%94%AF%E6%8C%81%E6%88%96%E4%BF%AE%E6%94%B9%E5%90%8E%E7%AB%AF%E4%BB%A3%E7%A0%81/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/29/%E4%BD%BF%E7%94%A8Nginx%E6%88%96%E4%BF%AE%E6%94%B9%E5%90%8E%E7%AB%AF%E4%BB%A3%E7%A0%81%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/" target="_self">
         <div>
-          title:跨域问题,使用网关（Nginx）支持或修改后端代码tags:[跨域，Nginx,网关]浏览器为了用户的安全，仅允许向 同域名、同端口 的服务器发送请求。 如何解决跨域？ 最直接的方式：把域名、端口改成相同的 添加跨域头让服务器告诉浏览器：允许跨域（返回 cross-origin-allow 响应头） 1. 网关支持（Nginx）123456789101112131415161718#
+          浏览器为了用户的安全，仅允许向 同域名、同端口 的服务器发送请求。 如何解决跨域？ 最直接的方式：把域名、端口改成相同的 添加跨域头让服务器告诉浏览器：允许跨域（返回 cross-origin-allow 响应头） 1. 网关支持（Nginx）123456789101112131415161718# 跨域配置location ^~ /api/ &#123;    proxy_pass http:/
         </div>
       </a>
 
@@ -281,6 +281,15 @@
           </div>
         
         
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%B7%A8%E5%9F%9F%EF%BC%8CNginx/">#跨域，Nginx</a>
+            
+              <a href="/tags/%E7%BD%91%E5%85%B3/">#网关</a>
+            
+          </div>
         
       </div>
     </article>
