@@ -16,22 +16,33 @@
   <meta name="author" content="Ohheng">
   <meta name="keywords" content="">
   
-    <meta name="description" content="浏览器为了用户的安全，仅允许向 同域名、同端口 的服务器发送请求。 如何解决跨域？ 最直接的方式：把域名、端口改成相同的 添加跨域头让服务器告诉浏览器：允许跨域（返回 cross-origin-allow 响应头） 1. 网关支持（Nginx）123456789101112131415161718# 跨域配置location ^~ &#x2F;api&#x2F; &#123;    proxy_pass http:&#x2F;">
+    <meta name="description" content="七牛云配置下面讲一下如何配置：  注册七牛云账号登录七牛官网，先注册一个七牛云的账号，这里注意，用户类型选择个人账号，然后进行实名认证。  创建七牛云存储空间   给自己的域名添加二级域名，因为我的域名是阿里云的，所以这里用阿里云的讲了     进入阿里云控制台：【云解析DNS】-&gt;【域名解析】-&gt;【解析设置】   然后添加一个二级域名，这个完了先不要关，等下还要改  绑定二级域名进入">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用Nginx或修改后端代码解决跨域问题">
-<meta property="og:url" content="http://example.com/2024/04/29/%E4%BD%BF%E7%94%A8Nginx%E6%88%96%E4%BF%AE%E6%94%B9%E5%90%8E%E7%AB%AF%E4%BB%A3%E7%A0%81%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:title" content="搭建七牛云图床提升百倍写作效率">
+<meta property="og:url" content="http://example.com/2024/04/29/%E6%90%AD%E5%BB%BA%E4%B8%83%E7%89%9B%E4%BA%91%E5%9B%BE%E5%BA%8A%E6%8F%90%E5%8D%87%E7%99%BE%E5%80%8D%E5%86%99%E4%BD%9C%E6%95%88%E7%8E%87/index.html">
 <meta property="og:site_name" content="Ohh">
-<meta property="og:description" content="浏览器为了用户的安全，仅允许向 同域名、同端口 的服务器发送请求。 如何解决跨域？ 最直接的方式：把域名、端口改成相同的 添加跨域头让服务器告诉浏览器：允许跨域（返回 cross-origin-allow 响应头） 1. 网关支持（Nginx）123456789101112131415161718# 跨域配置location ^~ &#x2F;api&#x2F; &#123;    proxy_pass http:&#x2F;">
+<meta property="og:description" content="七牛云配置下面讲一下如何配置：  注册七牛云账号登录七牛官网，先注册一个七牛云的账号，这里注意，用户类型选择个人账号，然后进行实名认证。  创建七牛云存储空间   给自己的域名添加二级域名，因为我的域名是阿里云的，所以这里用阿里云的讲了     进入阿里云控制台：【云解析DNS】-&gt;【域名解析】-&gt;【解析设置】   然后添加一个二级域名，这个完了先不要关，等下还要改  绑定二级域名进入">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-04-29T12:45:54.752Z">
-<meta property="article:modified_time" content="2024-04-29T13:20:41.205Z">
+<meta property="og:image" content="http://cdn.ohheng.cn/202404271443412.png">
+<meta property="og:image" content="http://cdn.ohheng.cn/202404271443365.png">
+<meta property="og:image" content="http://cdn.ohheng.cn/202404271443035.png">
+<meta property="og:image" content="http://cdn.ohheng.cn/202404271443133.png">
+<meta property="og:image" content="http://cdn.ohheng.cn/202404271443376.png">
+<meta property="og:image" content="http://cdn.ohheng.cn/202404271443099.png">
+<meta property="og:image" content="http://cdn.ohheng.cn/202404271447536.png">
+<meta property="og:image" content="http://cdn.ohheng.cn/202404271443350.png">
+<meta property="og:image" content="http://cdn.ohheng.cn/202404271443329.png">
+<meta property="og:image" content="http://cdn.ohheng.cn/202404271444040.png">
+<meta property="article:published_time" content="2024-04-29T12:58:02.085Z">
+<meta property="article:modified_time" content="2024-04-29T13:27:10.307Z">
 <meta property="article:author" content="Ohheng">
-<meta property="article:tag" content="跨域，Nginx，网关">
+<meta property="article:tag" content="域名，DNS，Typora，PicGo，图床，七牛云">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://cdn.ohheng.cn/202404271443412.png">
   
   
   
-  <title>使用Nginx或修改后端代码解决跨域问题 - Ohh</title>
+  <title>搭建七牛云图床提升百倍写作效率 - Ohh</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +208,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="使用Nginx或修改后端代码解决跨域问题"></span>
+            <span id="subtitle" data-typed-text="搭建七牛云图床提升百倍写作效率"></span>
           
         </div>
 
@@ -208,7 +219,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-04-29 20:45" pubdate>
+        <time datetime="2024-04-29 20:58" pubdate>
           2024年4月29日 晚上
         </time>
       </span>
@@ -220,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          377 字
+          493 字
         
       </span>
     
@@ -231,7 +242,7 @@
         
         
         
-          4 分钟
+          5 分钟
         
       </span>
     
@@ -268,26 +279,48 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">使用Nginx或修改后端代码解决跨域问题</h1>
+            <h1 id="seo-header">搭建七牛云图床提升百倍写作效率</h1>
             
             
               <div class="markdown-body">
                 
-                <p>浏览器为了用户的安全，仅允许向 <strong>同域名、同端口</strong> 的服务器发送请求。</p>
-<p>如何解决跨域？</p>
-<p>最直接的方式：把域名、端口改成相同的</p>
-<h3 id="添加跨域头"><a href="#添加跨域头" class="headerlink" title="添加跨域头"></a>添加跨域头</h3><p>让服务器告诉浏览器：允许跨域（返回 cross-origin-allow 响应头）</p>
-<h4 id="1-网关支持（Nginx）"><a href="#1-网关支持（Nginx）" class="headerlink" title="1. 网关支持（Nginx）"></a>1. 网关支持（Nginx）</h4><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-comment"># 跨域配置</span><br><span class="hljs-section">location</span><span class="hljs-regexp"> ^~</span> /api/ &#123;<br>    <span class="hljs-attribute">proxy_pass</span> http://127.0.0.1:8080/api/;<br>    <span class="hljs-attribute">add_header</span> <span class="hljs-string">&#x27;Access-Control-Allow-Origin&#x27;</span> <span class="hljs-variable">$http_origin</span>;<br>    <span class="hljs-attribute">add_header</span> <span class="hljs-string">&#x27;Access-Control-Allow-Credentials&#x27;</span> <span class="hljs-string">&#x27;true&#x27;</span>;<br>    <span class="hljs-attribute">add_header</span> Access-Control-Allow-Methods <span class="hljs-string">&#x27;GET, POST, OPTIONS&#x27;</span>;<br>    <span class="hljs-attribute">add_header</span> Access-Control-Allow-Headers <span class="hljs-string">&#x27;*&#x27;</span>;<br>    <span class="hljs-attribute">if</span> (<span class="hljs-variable">$request_method</span> = <span class="hljs-string">&#x27;OPTIONS&#x27;</span>) &#123;<br>        <span class="hljs-attribute">add_header</span> <span class="hljs-string">&#x27;Access-Control-Allow-Credentials&#x27;</span> <span class="hljs-string">&#x27;true&#x27;</span>;<br>        <span class="hljs-attribute">add_header</span> <span class="hljs-string">&#x27;Access-Control-Allow-Origin&#x27;</span> <span class="hljs-variable">$http_origin</span>;<br>        <span class="hljs-attribute">add_header</span> <span class="hljs-string">&#x27;Access-Control-Allow-Methods&#x27;</span> <span class="hljs-string">&#x27;GET, POST, OPTIONS&#x27;</span>;<br>        <span class="hljs-attribute">add_header</span> <span class="hljs-string">&#x27;Access-Control-Allow-Headers&#x27;</span> <span class="hljs-string">&#x27;DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range&#x27;</span>;<br>        <span class="hljs-attribute">add_header</span> <span class="hljs-string">&#x27;Access-Control-Max-Age&#x27;</span> <span class="hljs-number">1728000</span>;<br>        <span class="hljs-attribute">add_header</span> <span class="hljs-string">&#x27;Content-Type&#x27;</span> <span class="hljs-string">&#x27;text/plain; charset=utf-8&#x27;</span>;<br>        <span class="hljs-attribute">add_header</span> <span class="hljs-string">&#x27;Content-Length&#x27;</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-attribute">return</span> <span class="hljs-number">204</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h4 id="2-修改后端服务"><a href="#2-修改后端服务" class="headerlink" title="2. 修改后端服务"></a>2. 修改后端服务</h4><ol>
-<li><p>配置 @CrossOrigin 注解</p>
+                <h2 id="七牛云"><a href="#七牛云" class="headerlink" title="七牛云"></a>七牛云</h2><p><strong>配置</strong><br>下面讲一下如何配置：</p>
+<ol>
+<li><p>注册七牛云账号<br>登录七牛官网，先注册一个七牛云的账号，这里注意，用户类型选择个人账号，然后进行实名认证。</p>
 </li>
-<li><p>添加 web 全局请求拦截器</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Configuration</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">WebMvcConfg</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">WebMvcConfigurer</span> &#123;<br> <br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">addCorsMappings</span><span class="hljs-params">(CorsRegistry registry)</span> &#123;<br>        <span class="hljs-comment">//设置允许跨域的路径</span><br>        registry.addMapping(<span class="hljs-string">&quot;/**&quot;</span>)<br>                <span class="hljs-comment">//设置允许跨域请求的域名</span><br>                <span class="hljs-comment">//当**Credentials为true时，**Origin不能为星号，需为具体的ip地址【如果接口不带cookie,ip无需设成具体ip】</span><br>                .allowedOrigins(<span class="hljs-string">&quot;http://localhost:9527&quot;</span>, <span class="hljs-string">&quot;http://127.0.0.1:9527&quot;</span>, <span class="hljs-string">&quot;http://127.0.0.1:8082&quot;</span>, <span class="hljs-string">&quot;http://127.0.0.1:8083&quot;</span>)<br>                <span class="hljs-comment">//是否允许证书 不再默认开启</span><br>                .allowCredentials(<span class="hljs-literal">true</span>)<br>                <span class="hljs-comment">//设置允许的方法</span><br>                .allowedMethods(<span class="hljs-string">&quot;*&quot;</span>)<br>                <span class="hljs-comment">//跨域允许时间</span><br>                .maxAge(<span class="hljs-number">3600</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<li><p>创建七牛云存储空间</p>
+<p><img src="http://cdn.ohheng.cn/202404271443412.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 </li>
-<li><p>定义新的 corsFilter Bean，参考：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/b02099a435bd">https://www.jianshu.com/p/b02099a435bd</a></p>
+<li><p>给自己的域名添加二级域名，因为我的域名是阿里云的，所以这里用阿里云的讲了</p>
 </li>
 </ol>
+<p>  进入阿里云控制台：【云解析DNS】-&gt;【域名解析】-&gt;【解析设置】</p>
+<p>  <img src="http://cdn.ohheng.cn/202404271443365.png" srcset="/img/loading.gif" lazyload alt="img">然后添加一个二级域名，这个完了先不要关，等下还要改</p>
+<ol start="4">
+<li>绑定二级域名<br>进入七牛云域名绑定页面，点击添加域名，然后下图只需要把刚刚配置的域名写上，然后其余默认就行，点击创建</li>
+</ol>
+<p>  <img src="http://cdn.ohheng.cn/202404271443035.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>然后回到上一个页面，跟着下图操作</p>
+<p><img src="http://cdn.ohheng.cn/202404271443133.png" srcset="/img/loading.gif" lazyload alt="image-20240427133925927"></p>
+<p><img src="http://cdn.ohheng.cn/202404271443376.png" srcset="/img/loading.gif" lazyload alt="image-20240427133938256"></p>
+<p>然后回到刚刚添加域名的页面，点击刚刚添加的域名，把<a target="_blank" rel="noopener" href="http://www.baidu.com改成刚刚复制的东西/">www.baidu.com改成刚刚复制的东西</a></p>
+<p>配置完了之后等一会，系统审核完成后会发邮件，等状态变成成功说明配置完成了</p>
+<p><img src="http://cdn.ohheng.cn/202404271443099.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>记得查看外链域名修改为自己的，以及确认访问控制是否为公开</p>
+<p><img src="http://cdn.ohheng.cn/202404271447536.png" srcset="/img/loading.gif" lazyload alt="image-20240427144720493"></p>
+<h2 id="PicGo"><a href="#PicGo" class="headerlink" title="PicGo"></a>PicGo</h2><p>下载安装PicGo </p>
+<p>下载地址：<a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/PicGo/releases">https://github.com/Molunerfinn/PicGo/releases</a></p>
+<p>挑选一个版本，根据自己的操作系统（Win&#x2F;Linux&#x2F;Mac）来下载一个安装包：</p>
+<p><img src="http://cdn.ohheng.cn/202404271443350.png" srcset="/img/loading.gif" lazyload alt="image-20240427141940822"></p>
+<p>进入七牛云页面，右上角头像-&gt;密钥管理-&gt;复制 AccessKey和SecretKey到PicGo中，</p>
+<p>存储空间名是你第二步建立的空间的名字<br>网址是刚刚绑定的那个二级域名<br>存储区域：七牛云的存储区域（华东 z0，华北 z1，华南 z2，北美 na0，东南亚 as0 ），根据你空间所在的区域，填对应的代码</p>
+<p><img src="http://cdn.ohheng.cn/202404271443329.png" srcset="/img/loading.gif" lazyload alt="image-20220330004201058"></p>
+<h2 id="Typora"><a href="#Typora" class="headerlink" title="Typora"></a>Typora</h2><p>ypora开启图片自动上传</p>
+<p>最后，打开Typora，在偏好设置中，按照图中配置即可：</p>
+<p><img src="http://cdn.ohheng.cn/202404271444040.png" srcset="/img/loading.gif" lazyload alt="image-20240427144413998"></p>
+<blockquote>
+<p>参考CSDN:<code>https://blog.csdn.net/qq_46311811/article/details/123836233</code></p>
+</blockquote>
 
                 
               </div>
@@ -300,7 +333,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E8%B7%A8%E5%9F%9F%EF%BC%8CNginx%EF%BC%8C%E7%BD%91%E5%85%B3/" class="print-no-link">#跨域，Nginx，网关</a>
+        <a href="/tags/%E5%9F%9F%E5%90%8D%EF%BC%8CDNS%EF%BC%8CTypora%EF%BC%8CPicGo%EF%BC%8C%E5%9B%BE%E5%BA%8A%EF%BC%8C%E4%B8%83%E7%89%9B%E4%BA%91/" class="print-no-link">#域名，DNS，Typora，PicGo，图床，七牛云</a>
       
     </div>
   
@@ -312,8 +345,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>使用Nginx或修改后端代码解决跨域问题</div>
-      <div>http://example.com/2024/04/29/使用Nginx或修改后端代码解决跨域问题/</div>
+      <div>搭建七牛云图床提升百倍写作效率</div>
+      <div>http://example.com/2024/04/29/搭建七牛云图床提升百倍写作效率/</div>
     </div>
     <div class="license-meta">
       
@@ -357,9 +390,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/04/29/GitHubPages%E7%BB%91%E5%AE%9A%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/" title="GitHubPages绑定自定义域名">
+                      <a href="/2024/04/29/AntDesignPro%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96/" title="Ant Design Pro 的初始化">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">GitHubPages绑定自定义域名</span>
+                        <span class="hidden-mobile">Ant Design Pro 的初始化</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -367,8 +400,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/04/29/SpringBoot%E9%A1%B9%E7%9B%AE%E5%88%9D%E5%A7%8B%E6%A8%A1%E6%9D%BF/" title="SpringBoot项目初始模板">
-                        <span class="hidden-mobile">SpringBoot项目初始模板</span>
+                      <a href="/2024/04/29/GitHubPages%E7%BB%91%E5%AE%9A%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/" title="GitHubPages绑定自定义域名">
+                        <span class="hidden-mobile">GitHubPages绑定自定义域名</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
