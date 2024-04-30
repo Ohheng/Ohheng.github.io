@@ -14,7 +14,9 @@
     
     <tags>
       
-      <tag>前端，初始化</tag>
+      <tag>前端</tag>
+      
+      <tag>初始化</tag>
       
     </tags>
     
@@ -33,7 +35,17 @@
     
     <tags>
       
-      <tag>域名，DNS，Typora，PicGo，图床，七牛云</tag>
+      <tag>域名</tag>
+      
+      <tag>DNS</tag>
+      
+      <tag>Typora</tag>
+      
+      <tag>PicGo</tag>
+      
+      <tag>图床</tag>
+      
+      <tag>七牛云</tag>
       
     </tags>
     
@@ -52,7 +64,15 @@
     
     <tags>
       
-      <tag>域名，阿里云，DNS，GitHub，Pages</tag>
+      <tag>域名</tag>
+      
+      <tag>阿里云</tag>
+      
+      <tag>DNS</tag>
+      
+      <tag>GitHub</tag>
+      
+      <tag>Pages</tag>
       
     </tags>
     
@@ -71,7 +91,11 @@
     
     <tags>
       
-      <tag>跨域，Nginx，网关</tag>
+      <tag>跨域</tag>
+      
+      <tag>Nginx</tag>
+      
+      <tag>网关</tag>
       
     </tags>
     
@@ -90,7 +114,13 @@
     
     <tags>
       
-      <tag>后端，Java，Springboot，初始化</tag>
+      <tag>初始化</tag>
+      
+      <tag>后端</tag>
+      
+      <tag>Java</tag>
+      
+      <tag>Springboot</tag>
       
     </tags>
     
@@ -109,7 +139,9 @@
     
     <tags>
       
-      <tag>初始化，Hexo</tag>
+      <tag>初始化</tag>
+      
+      <tag>Hexo</tag>
       
     </tags>
     
