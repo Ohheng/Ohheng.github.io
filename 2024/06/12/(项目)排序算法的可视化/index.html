@@ -1,0 +1,1341 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Ohheng">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="排序数据随机产生，针对随机案例，对冒泡、归并等排序算法，提供排序执行过程的动态图形演示。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="排序算法的可视化">
+<meta property="og:url" content="http://example.com/2024/06/12/(%E9%A1%B9%E7%9B%AE)%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96/index.html">
+<meta property="og:site_name" content="Ohh&#96;s Blog">
+<meta property="og:description" content="排序数据随机产生，针对随机案例，对冒泡、归并等排序算法，提供排序执行过程的动态图形演示。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images.pexels.com/photos/20634973/pexels-photo-20634973.jpeg?auto=compress&cs=tinysrgb&w=600">
+<meta property="article:published_time" content="2024-06-12T10:14:45.342Z">
+<meta property="article:modified_time" content="2024-06-12T10:22:16.414Z">
+<meta property="article:author" content="Ohheng">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://images.pexels.com/photos/20634973/pexels-photo-20634973.jpeg?auto=compress&cs=tinysrgb&w=600">
+  
+  
+  
+  <title>排序算法的可视化 - Ohh`s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Ohh Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('http://cdn.ohheng.cn/202404292232936.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="排序算法的可视化"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-06-12 18:14" pubdate>
+          2024年6月12日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          56 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="项目"
+        id="heading-31ecc0e65b4cd3e6b12577382bb56d6a" role="tab" data-toggle="collapse" href="#collapse-31ecc0e65b4cd3e6b12577382bb56d6a"
+        aria-expanded="true"
+      >
+        项目
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-31ecc0e65b4cd3e6b12577382bb56d6a"
+           role="tabpanel" aria-labelledby="heading-31ecc0e65b4cd3e6b12577382bb56d6a">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2024/06/12/(%E9%A1%B9%E7%9B%AE)%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96/" title="排序算法的可视化"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">排序算法的可视化</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">排序算法的可视化</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="1、数据结构与算法设计课程实践"><a href="#1、数据结构与算法设计课程实践" class="headerlink" title="1、数据结构与算法设计课程实践"></a>1、数据结构与算法设计课程实践</h2><p>排序数据随机产生，针对随机案例，对冒泡排序、堆排序、归并算法，提供排序执行过程的动态图形演示。</p>
+<p>扩展：直接插入排序、选择排序、快速排序算法</p>
+<h2 id="2、详细分析"><a href="#2、详细分析" class="headerlink" title="2、详细分析"></a>2、详细分析</h2><h3 id="2-1-数据结构与算法说明"><a href="#2-1-数据结构与算法说明" class="headerlink" title="2.1 数据结构与算法说明"></a>2.1 数据结构与算法说明</h3><h4 id="2-1-1-冒泡排序（Bubble-Sort）"><a href="#2-1-1-冒泡排序（Bubble-Sort）" class="headerlink" title="2.1.1 冒泡排序（Bubble Sort）"></a>2.1.1 冒泡排序（Bubble Sort）</h4><p>冒泡排序是一种简单直观的排序算法。它重复地遍历要排序的列表，比较相邻的两个元素，并且交换它们的位置，直到整个列表排序完成。具体步骤如下：</p>
+<ol>
+<li>从列表的第一个元素开始，依次比较相邻的两个元素。</li>
+<li>如果第一个元素比第二个元素大（或者小，取决于升序还是降序），则交换它们的位置。</li>
+<li>继续向后遍历列表，重复上述比较和交换步骤，直到列表末尾。</li>
+<li>重复以上步骤，每次遍历都会将当前未排序部分的最大（或最小）元素“冒泡”到列表的末尾。</li>
+<li>重复以上步骤，直到整个列表排序完成。</li>
+</ol>
+<p>冒泡排序的时间复杂度为 O(n^2)，空间复杂度为 O(1)。尽管冒泡排序实现简单，但在实际应用中往往效率较低，特别是对于大型数据集。</p>
+<h4 id="2-1-3-堆排序（Heap-Sort）"><a href="#2-1-3-堆排序（Heap-Sort）" class="headerlink" title="2.1.3 堆排序（Heap Sort）"></a>2.1.3 堆排序（Heap Sort）</h4><p>堆排序是一种利用堆数据结构的排序算法。它利用了堆的特性，将待排序的序列构造成一个堆（通常是大顶堆），然后依次将堆顶元素与末尾元素交换，重新调整堆，直到整个序列有序。具体步骤如下：</p>
+<ol>
+<li>构建初始堆：将待排序的序列构造成一个大顶堆。</li>
+<li>交换堆顶元素和末尾元素：将堆顶元素（当前最大元素）与末尾元素交换，并将堆的大小减 1。</li>
+<li>重新调整堆：将剩余元素重新调整成大顶堆。</li>
+<li>重复步骤 2 和步骤 3，直到堆的大小为 1。</li>
+</ol>
+<p>堆排序的时间复杂度为 O(n log n)，空间复杂度为 O(1)。它具有原地排序的特点，不需要额外的空间，因此在空间效率上比较高。</p>
+<h4 id="2-1-3-归并排序（Merge-Sort）"><a href="#2-1-3-归并排序（Merge-Sort）" class="headerlink" title="2.1.3 归并排序（Merge Sort）"></a>2.1.3 归并排序（Merge Sort）</h4><p>归并排序是一种分治算法，它将待排序数组分成两个子数组，然后递归地对子数组进行排序，最后将排好序的子数组合并成一个整体有序的数组。具体步骤如下：</p>
+<ol>
+<li>分解：将待排序的数组递归地分解成两个子数组，直到每个子数组只有一个元素。</li>
+<li>合并：将两个有序的子数组合并成一个有序数组，同时进行排序。</li>
+<li>重复以上步骤，直到所有子数组合并完成，得到最终的有序数组。</li>
+</ol>
+<p>归并排序的时间复杂度为 O(n log n)，空间复杂度为 O(n)，因为需要额外的空间来存储临时数组。尽管归并排序在空间上略高，但由于其稳定性和适用性，仍然被广泛应用。</p>
+<h4 id="2-1-4-直接插入排序（Insertion-Sort）"><a href="#2-1-4-直接插入排序（Insertion-Sort）" class="headerlink" title="2.1.4 直接插入排序（Insertion Sort）"></a>2.1.4 直接插入排序（Insertion Sort）</h4><p>直接插入排序是一种简单直观的排序算法，它通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入。具体步骤如下：</p>
+<ol>
+<li>从第一个元素开始，该元素可以认为已经被排序。</li>
+<li>取出下一个元素，在已经排序的元素序列中从后向前扫描。</li>
+<li>如果已排序的元素大于新元素，将该已排序元素移到下一位置。</li>
+<li>重复步骤3，直到找到已排序的元素小于或等于新元素的位置。</li>
+<li>将新元素插入到该位置中。</li>
+<li>重复步骤2-5。</li>
+</ol>
+<p><strong>时间复杂度</strong>：最坏情况 O(n^2)，最好情况 O(n) <strong>空间复杂度</strong>：O(1) <strong>特点</strong>：适合于少量数据的排序，稳定。</p>
+<h4 id="2-1-5-选择排序（Selection-Sort）"><a href="#2-1-5-选择排序（Selection-Sort）" class="headerlink" title="2.1.5 选择排序（Selection Sort）"></a>2.1.5 选择排序（Selection Sort）</h4><p>选择排序是一种简单直观的排序算法，它的工作原理是每次从待排序的数据中选出最小（或最大）的一个元素，存放在序列的起始位置，直到全部待排序的数据元素排完。具体步骤如下：</p>
+<ol>
+<li>初始状态：无序区为 R[1..n]，有序区为空。</li>
+<li>第i趟排序 (i&#x3D;1,2,3…n-1) 开始时，当前有序区和无序区分别为 R[1..i-1] 和 R(i..n)。该趟排序从当前无序区中选出关键字最小的记录 R[k]，将它与无序区的第一个记录 R交换，使 R[1..i] 和 R[i+1..n] 分别变为记录个数增加1个的新有序区和记录个数减少1个的新无序区。</li>
+<li>n-1趟结束，数组有序化。</li>
+</ol>
+<p><strong>时间复杂度</strong>：O(n^2) <strong>空间复杂度</strong>：O(1) <strong>特点</strong>：简单直观，适合数据量小的情况，不稳定。</p>
+<h4 id="2-1-6-快速排序（Quick-Sort）"><a href="#2-1-6-快速排序（Quick-Sort）" class="headerlink" title="2.1.6 快速排序（Quick Sort）"></a>2.1.6 快速排序（Quick Sort）</h4><p>快速排序是一种分治算法，通过一次排序将要排序的数据分割成独立的两部分，其中一部分的所有数据都比另外一部分的所有数据都要小，然后再按此方法对这两部分数据分别进行快速排序。具体步骤如下：</p>
+<ol>
+<li>从数列中挑出一个元素，称为“基准”（pivot）。</li>
+<li>重新排序数列，所有比基准值小的元素摆放在基准前面，所有比基准值大的元素摆在基准的后面（相同的数可以到任一边）。在这个分区退出之后，该基准就处于数列的中间位置。这个称为分区（partition）操作。</li>
+<li>递归地（recursive）把小于基准值元素的子数列和大于基准值元素的子数列排序。</li>
+</ol>
+<p><strong>时间复杂度</strong>：最坏情况 O(n^2)，平均情况 O(n log n) <strong>空间复杂度</strong>：O(log n)（递归调用造成的栈空间） <strong>特点</strong>：速度快，效率高，适合大规模数据的排序，不稳定。</p>
+<h3 id="2-2-设计思路"><a href="#2-2-设计思路" class="headerlink" title="2.2 设计思路"></a>2.2 设计思路</h3><blockquote>
+<p>阐述算法的设计思想，辅以流程图加以说明。此部分是利用上节中涉及的知识点和算法进行解题，即阐述的重点是强调如何对知识点和算法的组合运用。可以利用流程图、框架图等各种图形化工具进行详细的阐述说明，目的就是把设计思路讲清楚说明白。</p>
+</blockquote>
+<ol>
+<li><p><strong>目标设定</strong>：</p>
+<p>创建一个可视化工具，展示不同排序算法的执行过程,让用户能够直观地理解排序算法的工作原理。</p>
+</li>
+<li><p><strong>技术选型</strong>：</p>
+<ul>
+<li>选择Python语言，因其简洁易懂，拥有丰富的库支持。</li>
+<li>选择Matplotlib库，不仅支持数据可视化，还能生成动画，与FFMpeg结合后能直接输出视频格式。</li>
+</ul>
+</li>
+<li><p><strong>排序算法实现</strong>：</p>
+<ul>
+<li>采用Python实现多种排序算法，如冒泡排序、归并排序、堆排序等。</li>
+<li>每种排序算法都设计为能够记录其执行过程中的“帧”。</li>
+</ul>
+</li>
+<li><p><strong>动画帧处理</strong>：</p>
+<ul>
+<li>在排序算法的关键步骤截取数据状态，作为动画的一帧。</li>
+<li>使用深拷贝来保存每一帧的状态，确保动画的流畅性和数据的一致性。</li>
+</ul>
+</li>
+<li><p><strong>颜色编码</strong>：</p>
+<ul>
+<li>为了突出显示排序过程中的重要操作，采用颜色编码来增强视觉效果。例如，在交换元素时，将涉及的元素标记为特定颜色。</li>
+</ul>
+</li>
+<li><p><strong>动画展示</strong>：</p>
+<ul>
+<li>利用Matplotlib的动画功能，将排序过程的帧连续播放，形成动画。</li>
+<li>提供播放、保存为HTML或MP4文件的功能，以适应不同的展示需求。</li>
+</ul>
+</li>
+<li><p><strong>用户交互</strong>：</p>
+<ul>
+<li>允许用户通过命令行参数选择排序算法和数据类型。</li>
+<li>支持用户自定义动画的帧间隔和每秒帧数（fps）。</li>
+<li>用户可以通过命令行界面选择播放动画、保存为视频或HTML文件</li>
+</ul>
+</li>
+<li><p><strong>代码实现</strong>：</p>
+<ul>
+<li>对于每种排序算法，实现一个函数，该函数不仅执行排序，还生成动画帧。</li>
+<li>使用注释明确区分动画帧操作部分，保持代码的清晰和可维护性。</li>
+</ul>
+</li>
+<li><p><strong>扩展性</strong>：</p>
+<ul>
+<li>设计时考虑到扩展性，方便未来添加更多的排序算法和展示特性。</li>
+</ul>
+</li>
+</ol>
+<p><strong>运行流程图：</strong></p>
+<p><img src="http://cdn.ohheng.cn/202405061031600.png" srcset="/img/loading.gif" lazyload alt="排序可视化"></p>
+<ol>
+<li><strong>开始</strong>：用户启动排序算法可视化过程。</li>
+<li><strong>运行 <code>output.py</code> 脚本</strong>：用户在命令行中运行 <code>output.py</code> 脚本，开始执行排序算法的可视化。</li>
+<li><strong>命令行参数解析</strong>：脚本首先解析用户提供的命令行参数，这些参数决定了可视化的类型（播放、保存为 HTML 或 MP4）和排序算法的具体选项。</li>
+<li><strong>选择数据类型</strong>：根据用户的选择，脚本确定要生成的数据集类型，如随机、几乎排序好、少数唯一值或逆序。</li>
+<li><strong>生成数据集</strong>：脚本使用选定的数据类型生成一个待排序的数据集。</li>
+<li><strong>执行排序算法</strong>：脚本对生成的数据集执行用户选择的排序算法。</li>
+<li><strong>生成动画帧</strong>：在排序过程中，脚本记录每一步的状态，生成动画帧。</li>
+<li><strong>保存动画帧为图片序列</strong>：脚本将生成的动画帧保存为一系列图片文件。</li>
+<li><strong>播放动画</strong>（如果用户选择 <code>play</code>）：<ul>
+<li>脚本使用 Matplotlib 在窗口中播放排序过程的动画。</li>
+</ul>
+</li>
+<li><strong>保存为 HTML</strong>（如果用户选择 <code>save-html</code>）：<ul>
+<li>脚本创建一个 HTML 文件。</li>
+<li>将图片序列嵌入到 HTML 文件中。</li>
+<li>保存 HTML 页面，用户可以在浏览器中查看动画。</li>
+</ul>
+</li>
+<li><strong>保存为 MP4</strong>（如果用户选择 <code>save-mp4</code>）：<ul>
+<li>脚本指定输出路径和文件名。</li>
+<li>调用 FFmpeg 命令行工具，将图片序列转换为 MP4 视频文件。</li>
+<li>生成 MP4 视频文件。</li>
+</ul>
+</li>
+<li><strong>结束</strong>：完成动画的播放或保存后，程序结束。</li>
+</ol>
+<h3 id="2-3-类-接口-函数设计"><a href="#2-3-类-接口-函数设计" class="headerlink" title="2.3 类&#x2F;接口&#x2F;函数设计"></a>2.3 类&#x2F;接口&#x2F;函数设计</h3><blockquote>
+<p>列出需要实现的各类、接口、函数等，仅写出数据成员、构造函数、析构函数和其它接口函数等抽象定义，无需具体实现代码，并说明其实现的具体功能。学生应该认真思考题目问题，对问题进行分解，将大问题分解为若干子问题。使用结构化程序设计方法，为每个子过程设计函数。</p>
+</blockquote>
+<h4 id="2-3-1-output-py"><a href="#2-3-1-output-py" class="headerlink" title="2.3.1 output.py"></a>2.3.1 <code>output.py</code></h4><p>这个脚本是一个完整的应用程序，它展示了如何使用Python和matplotlib来创建教育性的排序算法可视化工具。用户可以通过命令行与程序交互，选择不同的排序算法和数据类型来观察排序过程。程序支持将排序过程保存为视频文件或HTML文件，方便分享和查看。</p>
+<p><strong>全局变量：</strong></p>
+<ul>
+<li><code>stype_dic</code>：一个字典，存储排序算法名称和它们对应的索引。</li>
+<li><code>titles</code>：一个列表，存储排序算法的标题和时间复杂度。</li>
+<li><code>funs</code>：一个列表，存储排序算法的函数，可以通过索引快速访问。</li>
+</ul>
+<p><strong>函数定义：</strong></p>
+<ul>
+<li><code>create_original_data(dtype)</code>：根据提供的类型（”random”, “reversed”, “few-unique”, “almost-sorted”）生成原始数据集。</li>
+<li><code>draw_chart(stype, original_data, frame_interval)</code>：绘制指定排序算法的动态图表。</li>
+<li><code>draw_all_charts(original_data, frame_interval)</code>：绘制所有排序算法的动态图表。</li>
+</ul>
+<p><strong>主程序：</strong></p>
+<ol>
+<li>脚本首先尝试从用户那里获取要排序的数据项数量，如果失败则默认为32。</li>
+<li>根据命令行参数，脚本可以执行三种操作：播放动画（<code>play</code>）、保存为HTML（<code>save-html</code>）或保存为MP4文件（<code>save-mp4</code>）。</li>
+<li>根据用户输入的排序算法类型和数据类型，脚本调用相应的函数生成动画并展示或保存。</li>
+</ol>
+<h4 id="2-3-2-data-py"><a href="#2-3-2-data-py" class="headerlink" title="2.3.2 data.py"></a>2.3.2 <code>data.py</code></h4><p>用于在排序算法可视化中表示和区分数据元素。通过动态设置颜色，它可以增加可视化的可读性和吸引力。</p>
+<p><strong>全局变量：</strong></p>
+<p>data_count（int）:表示数据集中元素的总数,固定为32。</p>
+<p><strong>构造函数：</strong></p>
+<p><code> __init__(self, value):</code>初始化数据元素的值，并调用 <code>set_color</code> 方法来设置颜色。</p>
+<p><strong>类方法：</strong></p>
+<p><code>set_color(self, rgba=None)</code>: 设置数据元素的颜色。如果未提供 <code>rgba</code>，则根据元素的值自动计算颜色。</p>
+<h4 id="2-3-3-排序算法"><a href="#2-3-3-排序算法" class="headerlink" title="2.3.3 排序算法"></a>2.3.3 排序算法</h4><ul>
+<li><p><strong>冒泡排序<code>bubblesort.py</code></strong></p>
+<ul>
+<li>执行冒泡排序，并通过深拷贝（<code>copy.deepcopy</code>）在每个关键步骤保存数据状态，形成动画帧列表（<code>frames</code>）。在每次元素交换时，将当前状态添加到帧列表，并标记交换的元素为红色，以突出显示。</li>
+</ul>
+</li>
+<li><p><strong>堆排序<code>heapsort.py</code></strong></p>
+<p><strong>函数定义</strong></p>
+<ol>
+<li><strong>heap_sort(data_set)</strong>: 执行堆排序算法，并记录动画帧,返回一个包含排序过程每一步骤的动画帧列表</li>
+<li><strong>heap_adjust(ds, head, tail, frames)</strong>: 对堆进行调整，确保堆的性质得到满足</li>
+</ol>
+</li>
+<li><p><strong>归并排序<code>mergesort.py</code></strong></p>
+<p><strong>函数定义</strong></p>
+<ol>
+<li><strong>merge_sort(data_set)</strong>: 执行归并排序算法，并记录动画帧。返回一个包含排序过程每一步骤的动画帧</li>
+<li><strong>split_merge(ds, head, tail, frames)</strong>: 递归地分割数据集，并合并已排序的子序列。</li>
+</ol>
+</li>
+<li><p><strong>直接插入排序<code>insertionsort.py</code></strong></p>
+<ul>
+<li>执行插入排序算法，记录动画帧。返回一个包含排序过程每一步骤的动画帧列表。</li>
+</ul>
+</li>
+<li><p><strong>选择排序<code>selectionsort.py</code></strong></p>
+<ul>
+<li>执行选择排序算法，记录动画帧。返回一个包含排序过程每一步骤的动画帧列表。</li>
+</ul>
+</li>
+<li><p><strong>快速排序<code>quicksort.py</code></strong></p>
+<p><strong>函数定义</strong></p>
+<ol>
+<li><strong>quick_sort(data_set)</strong>: 作为快速排序的入口函数，初始化帧列表并调用递归的快速排序函数 <code>qsort</code>。返回一个包含排序过程每一步骤的动画帧列表。</li>
+<li><strong>qsort(ds, head, tail, frames)</strong>: 递归函数，执行快速排序的分区操作，并递归地对子部分进行排序。</li>
+</ol>
+</li>
+</ul>
+<h3 id="2-4-类-接口-函数关系"><a href="#2-4-类-接口-函数关系" class="headerlink" title="2.4 类&#x2F;接口&#x2F;函数关系"></a>2.4 类&#x2F;接口&#x2F;函数关系</h3><blockquote>
+<p>可利用图形化工具说明各类、函数之间的调用关系。由于目前阶段尚未学习软件工程等相关知识，在这里学生可以自由发挥，说清楚明白即可。鼓励学生自学结构化设计工具进行阐述说明。</p>
+</blockquote>
+<pre><code class=" mermaid">classDiagram
+    class Data &#123;
+        +int value
+        +tuple color
+        +int data_count
+        __init__(value) : Data
+        set_color(rgba=None) : None
+    &#125;
+    class SortingAlgorithm &#123;
+        +vector&lt;Data&gt; dataSet
+        __init__(dataSet) : SortingAlgorithm
+        +sort() : None
+        +getAlgorithmName() : str
+        +getSortedData() : vector&lt;Data&gt;
+    &#125;
+    class BubbleSort &#123;
+        +frames : vector&lt;Data&gt;
+        +bubble_sort(data_set) : vector&lt;Data&gt;
+    &#125;
+    class MergeSort &#123;
+        +frames : vector&lt;Data&gt;
+        +merge_sort(data_set) : vector&lt;Data&gt;
+        +split_merge(ds, head, tail, frames) : None
+    &#125;
+    class InsertionSort &#123;
+        +frames : vector&lt;Data&gt;
+        +insertion_sort(data_set) : vector&lt;Data&gt;
+    &#125;
+    class QuickSort &#123;
+        +frames : vector&lt;Data&gt;
+        +quick_sort(data_set) : vector&lt;Data&gt;
+        +qsort(ds, head, tail, frames) : None
+    &#125;
+    class SelectionSort &#123;
+        +frames : vector&lt;Data&gt;
+        +selection_sort(data_set) : vector&lt;Data&gt;
+    &#125;
+    class HeapSort &#123;
+        +frames : vector&lt;Data&gt;
+        +heap_sort(data_set) : vector&lt;Data&gt;
+        +heap_adjust(ds, head, tail, frames) : None
+        +color(ds, n) : vector&lt;Data&gt;
+    &#125;
+    
+    SortingAlgorithm &lt;|-- BubbleSort
+    SortingAlgorithm &lt;|-- MergeSort
+    SortingAlgorithm &lt;|-- InsertionSort
+    SortingAlgorithm &lt;|-- QuickSort
+    SortingAlgorithm &lt;|-- SelectionSort
+    SortingAlgorithm &lt;|-- HeapSort
+</code></pre>
+
+
+
+<h2 id="3、程序实现"><a href="#3、程序实现" class="headerlink" title="3、程序实现"></a>3、程序实现</h2><h3 id="3-1-核心代码说明"><a href="#3-1-核心代码说明" class="headerlink" title="3.1 核心代码说明"></a>3.1 核心代码说明</h3><blockquote>
+<p>列出核心功能的相关代码，并加以说明。这里的核心代码可以是关键算法的代码，可以是通过自学实现的新技术代码，也可以是重要功能的相关代码等。注意，详细说明不仅指的是详细的注释，同时也要对相应代码涉及的原理和作用进行适当说明。不要粘贴全部源代码，请用截图的方式截取关键核心代码！文件排版要做的整洁干净舒适。</p>
+</blockquote>
+<h4 id="3-1-1-output-py"><a href="#3-1-1-output-py" class="headerlink" title="3.1.1 output.py"></a>3.1.1 <code>output.py</code></h4><p>在创建原始数据集的函数 <code>create_original_data</code> 中，核心功能是根据提供的类型 <code>dtype</code> 生成一个特定顺序的整数列表，这个列表将用于后续的排序算法可视化。</p>
+<p>以下是核心代码的说明：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs haskell">复制def create_original_data(dtype):<br>    <span class="hljs-class"><span class="hljs-keyword">data</span> = []</span><br>    <span class="hljs-keyword">if</span> dtype == <span class="hljs-string">&quot;random&quot;</span>:  # 对随机序列进行排序<br>        <span class="hljs-class"><span class="hljs-keyword">data</span> = list(<span class="hljs-title">range</span>(1, <span class="hljs-type">Data</span>.<span class="hljs-title">data_count</span> + 1))  # 生成序列 1 到 <span class="hljs-type">Data</span>.data_count 的整数列表</span><br>        random.shuffle(<span class="hljs-class"><span class="hljs-keyword">data</span>)  # 随机打乱列表</span><br>    elif dtype == <span class="hljs-string">&quot;reversed&quot;</span>:  # 按降序排序<br>        <span class="hljs-class"><span class="hljs-keyword">data</span> = list(<span class="hljs-title">range</span>(<span class="hljs-type">Data</span>.<span class="hljs-title">data_count</span>, 0, -1))  # 生成降序列表</span><br>    # ... 省略其他条件分支 ...<br>    return <span class="hljs-class"><span class="hljs-keyword">data</span></span><br></code></pre></td></tr></table></figure>
+
+<p>核心功能的原理和作用：</p>
+<ol>
+<li><p><strong>随机序列</strong> (<code>&quot;random&quot;</code>):</p>
+<ul>
+<li><p>模拟大多数实际应用场景，元素初始状态无序。</p>
+</li>
+<li><p>使用 <code>range(1, Data.data_count + 1)</code> 生成一个从 1 到 <code>Data.data_count</code> 的整数序列。</p>
+</li>
+<li><p>调用 <code>random.shuffle(data)</code> 将列表中的元素随机打乱，为排序算法提供一个随机的初始状态。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>降序序列</strong> (<code>&quot;reversed&quot;</code>):</p>
+<ul>
+<li><p>测试排序算法处理完全逆序的数据集的能力。</p>
+</li>
+<li><p>使用 <code>range(Data.data_count, 0, -1)</code> 生成一个从 <code>Data.data_count</code> 递减到 1 的整数序列，形成一个降序排列。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>部分重复序列</strong> (<code>&quot;few-unique&quot;</code>):</p>
+<ul>
+<li><p>模拟具有大量重复元素的数据集，测试排序算法的效率。</p>
+</li>
+<li><p>将数据集划分为四部分，每部分包含数据集中的四分之一元素，每部分的元素值分别为 <code>d</code>, <code>d * 2</code>, <code>d * 3</code>，其中 <code>d = Data.data_count // 4</code>。</p>
+</li>
+<li><p>然后随机打乱整个列表，创建一个包含部分重复元素的数据集。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>几乎已排序序列</strong> (<code>&quot;almost-sorted&quot;</code>):</p>
+<ul>
+<li><p>测试排序算法处理接近有序的数据集的性能。</p>
+</li>
+<li><p>首先生成一个从 1 到 <code>Data.data_count</code> 的升序列表。</p>
+</li>
+<li><p>随机选择两个位置 <code>a</code> 和 <code>b</code>，如果相同则重新选择 <code>b</code>，保证 <code>a != b</code>。</p>
+</li>
+<li><p>交换这两个位置的元素，从而创建一个除了一对元素外都已排序的数据集。</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>在 <code>draw_chart</code> 函数中，核心功能是生成一个动态图表来展示特定排序算法的过程。</p>
+<p>以下是关键代码段的说明：</p>
+<p><strong>关键代码段</strong></p>
+<ol>
+<li><p><strong>初始化图表和子图</strong>：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">fig</span> = plt.figure(<span class="hljs-number">1</span>, figsize=(<span class="hljs-number">16</span>, <span class="hljs-number">9</span>))<br><span class="hljs-attribute">axs</span> = fig.add_subplot(<span class="hljs-number">111</span>)<br><span class="hljs-attribute">axs</span>.set_xticks([])<br><span class="hljs-attribute">axs</span>.set_yticks([])<br><span class="hljs-attribute">plt</span>.subplots_adjust(left=<span class="hljs-number">0</span>.<span class="hljs-number">01</span>, bottom=<span class="hljs-number">0</span>.<span class="hljs-number">02</span>, right=<span class="hljs-number">0</span>.<span class="hljs-number">99</span>, top=<span class="hljs-number">0</span>.<span class="hljs-number">95</span>, wspace=<span class="hljs-number">0</span>.<span class="hljs-number">05</span>, hspace=<span class="hljs-number">0</span>.<span class="hljs-number">15</span>)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>创建一个新图表，并设置为16:9的尺寸。</li>
+<li>添加一个子图。</li>
+<li>隐藏坐标轴刻度，以便专注于排序动画。</li>
+</ul>
+</li>
+<li><p><strong>转换原始数据并初始化动画帧</strong>：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">data_set</span> = [Data(d) for d in original_data]<br><span class="hljs-attr">frames</span> = funs[stype](data_set)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>将原始数据转换为 <code>Data</code> 对象，这些对象包含了排序所需的所有信息，如值和颜色。</li>
+<li>调用排序算法函数，获取整个排序过程的动画帧。</li>
+</ul>
+</li>
+<li><p><strong>打印排序算法信息</strong>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;%s: %d frames.&quot;</span> % (re.findall(<span class="hljs-string">r&quot;\w+ Sort&quot;</span>, titles[stype])[<span class="hljs-number">0</span>], <span class="hljs-built_in">len</span>(frames)))<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>打印排序算法的名称和动画帧总数。</li>
+</ul>
+</li>
+<li><p><strong>定义动画函数</strong>：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ruby"><span class="hljs-keyword">def</span> <span class="hljs-title function_">animate</span>(<span class="hljs-params">fi</span>):<br>    <span class="hljs-comment"># ... 动画绘制代码 ...</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>根据当前帧编号 <code>fi</code> 绘制柱状图，表示排序算法的当前状态。</li>
+</ul>
+</li>
+<li><p><strong>创建动画对象</strong>：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">anim = animation.FuncAnimation(fig, animate, <span class="hljs-attribute">frames</span>=len(frames), <span class="hljs-attribute">interval</span>=frame_interval)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>使用 <code>FuncAnimation</code> 创建动画对象，指定动画函数、帧数和帧间隔。</li>
+</ul>
+</li>
+<li><p><strong>返回绘图对象和动画对象</strong>：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-keyword">return</span> plt, anim<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>返回Matplotlib的绘图对象和动画对象，以便进一步操作或展示。</li>
+</ul>
+</li>
+</ol>
+<p>在 <code>draw_all_charts</code> 函数中，核心功能是创建一个包含所有排序算法动态图表的复合图表。</p>
+<p>以下是关键代码段及其说明：</p>
+<p><strong>关键代码段</strong></p>
+<ol>
+<li><p><strong>初始化图表和子图</strong>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">fig = plt.figure(<span class="hljs-number">1</span>, figsize=(<span class="hljs-number">16</span>, <span class="hljs-number">9</span>))<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">6</span>):<br>    axs.append(fig.add_subplot(<span class="hljs-number">331</span> + i))<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>创建一个新的图表，并为六种排序算法设置子图。</li>
+</ul>
+</li>
+<li><p><strong>隐藏坐标轴</strong>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">axs[-<span class="hljs-number">1</span>].set_xticks([])<br>axs[-<span class="hljs-number">1</span>].set_yticks([])<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>隐藏所有子图的坐标轴刻度，以便专注于排序动画。</li>
+</ul>
+</li>
+<li><p><strong>调整子图布局</strong>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">plt.subplots_adjust(left=<span class="hljs-number">0.01</span>, bottom=<span class="hljs-number">0.02</span>, right=<span class="hljs-number">0.99</span>, top=<span class="hljs-number">0.95</span>, wspace=<span class="hljs-number">0.05</span>, hspace=<span class="hljs-number">0.15</span>)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>在一个图表中展示多种排序算法，每种算法一个子图，方便比较它们的效率和排序过程。</li>
+<li>调整子图的位置和间距，确保它们在图表中的布局整洁且舒适。</li>
+</ul>
+</li>
+<li><p><strong>获取排序算法的动画帧</strong>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">6</span>):<br>    frames.append(funs[i](data_set))<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>为每种排序算法收集动画帧，每个动画帧代表排序过程中的一个步骤。</li>
+</ul>
+</li>
+<li><p><strong>打印排序算法信息</strong>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">6</span>):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;%-*s %*d frames&quot;</span> % (max_name_length, names[i], max_frame_length, frame_counts[i]))<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>提供用户友好的反馈，告知用户每种排序算法的名称和涉及的动画帧数。</li>
+</ul>
+</li>
+<li><p><strong>定义动画函数</strong>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">animate</span>(<span class="hljs-params">fi</span>):<br>    <span class="hljs-comment"># ... 动画绘制代码 ...</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>对于每种排序算法，绘制当前帧的柱状图。</li>
+</ul>
+</li>
+<li><p><strong>创建动画对象</strong>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">anim = animation.FuncAnimation(fig, animate, frames=<span class="hljs-built_in">max</span>(<span class="hljs-built_in">len</span>(f) <span class="hljs-keyword">for</span> f <span class="hljs-keyword">in</span> frames), interval=frame_interval)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>使用 <code>FuncAnimation</code> 连续播放所有排序算法的动画，允许用户同时观察所有算法的执行过程。</li>
+</ul>
+</li>
+<li><p><strong>返回绘图对象和动画对象</strong>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">return</span> plt, anim<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>返回Matplotlib的绘图对象和动画对象。</li>
+</ul>
+</li>
+</ol>
+<h4 id="3-1-2-排序动画"><a href="#3-1-2-排序动画" class="headerlink" title="3.1.2 排序动画"></a>3.1.2 排序动画</h4><p><strong>实现步骤：</strong></p>
+<ol>
+<li>初始化动画帧列表 <code>frames</code>。</li>
+<li>复制数据集 <code>ds</code> 以避免直接修改原始数据。</li>
+<li>通过两层循环实现冒泡排序，外层控制排序轮数，内层执行相邻元素的比较和交换。</li>
+<li>每次交换后，添加当前状态到动画帧列表，并标记交换元素。</li>
+<li>如果一轮排序未发生交换，提前结束排序，因为数据已经有序。</li>
+<li>排序完成后，将最终排序状态添加到动画帧列表。</li>
+<li>返回动画帧列表，供动画展示使用。</li>
+</ol>
+<h3 id="3-2-程序运行"><a href="#3-2-程序运行" class="headerlink" title="3.2 程序运行"></a>3.2 程序运行</h3><p>运行如下命令调用所有函数:</p>
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs inform7">python output.py arg1 <span class="hljs-comment">[arg2 <span class="hljs-comment">[arg3]</span>]</span>  <br></code></pre></td></tr></table></figure>
+
+<p><strong>参数详情：</strong></p>
+<p>参数1</p>
+<ul>
+<li><code>play</code>：在新窗口中播放特定排序算法或所有算法的动画，作为Matplotlib的“图形”。</li>
+<li><code>save-html</code>：将动画保存为一系列图像的HTML页面。</li>
+<li><code>save-mp4</code>：将动画保存为MP4视频。</li>
+</ul>
+<p>参数2</p>
+<ul>
+<li><code>all</code> (默认)：在动画中显示所有排序算法的可视化。</li>
+<li><code>bubble-sort</code>：仅在动画中显示冒泡排序算法的可视化。</li>
+<li><code>heap-sort</code>: 仅在动画中显示堆排序算法的可视化。</li>
+<li><code>merge-sort</code>: 仅在动画中显示归并排序算法的可视化。</li>
+<li><code>insertion-sort</code>: 仅在动画中显示直接插入排序算法的可视化。</li>
+<li><code>selection-sort</code>: 仅在动画中显示选择排序算法的可视化。</li>
+<li><code>quick-sort</code>: 仅在动画中显示快速排序算法的可视化。</li>
+</ul>
+<p>参数3</p>
+<ul>
+<li><p><code>random</code> (默认)：对随机序列进行排序。</p>
+</li>
+<li><p><code>almost-sorted</code>：对几乎已排序的序列进行排序。</p>
+</li>
+<li><p><code>few-unique</code>：对一些部分重复的序列进行排序。</p>
+</li>
+<li><p><code>reversed</code>：对降序序列进行排序。</p>
+</li>
+</ul>
+<p><strong>示例</strong></p>
+<ul>
+<li>冒泡算法对降序序列排序</li>
+</ul>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">python output.py play bubble<span class="hljs-literal">-sort</span> reversed  <br></code></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>排序前</th>
+<th>排序后</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><img src="http://cdn.ohheng.cn/202406121809579.jpg" srcset="/img/loading.gif" lazyload alt="img"></td>
+<td><img src="http://cdn.ohheng.cn/202406121809596.jpg" srcset="/img/loading.gif" lazyload alt="img"></td>
+</tr>
+</tbody></table>
+<ul>
+<li>堆排序算法对随机序列排序</li>
+</ul>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">python output.py play heap<span class="hljs-literal">-sort</span>  <br></code></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>排序前</th>
+<th>排序后</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><img src="http://cdn.ohheng.cn/202406121809589.jpg" srcset="/img/loading.gif" lazyload alt="img"></td>
+<td><img src="http://cdn.ohheng.cn/202406121809598.jpg" srcset="/img/loading.gif" lazyload alt="img"></td>
+</tr>
+</tbody></table>
+<ul>
+<li>归并排序算法对一些部分重复的序列排序</li>
+</ul>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">python output.py play <span class="hljs-built_in">merge-sort</span> few<span class="hljs-literal">-unique</span>  <br></code></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>排序前</th>
+<th>排序后</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><img src="http://cdn.ohheng.cn/202406121809603.jpg" srcset="/img/loading.gif" lazyload alt="img"></td>
+<td><img src="http://cdn.ohheng.cn/202406121809607.jpg" srcset="/img/loading.gif" lazyload alt="img"></td>
+</tr>
+</tbody></table>
+<ul>
+<li>直接插入排序算法对几乎已排序的序列排序</li>
+</ul>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">python output.py play insertion<span class="hljs-literal">-sort</span>  almost<span class="hljs-literal">-sorted</span>     <br></code></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>排序前</th>
+<th>排序后</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><img src="http://cdn.ohheng.cn/202406121812220.jpg" srcset="/img/loading.gif" lazyload alt="img"></td>
+<td><img src="http://cdn.ohheng.cn/202406121812980.jpg" srcset="/img/loading.gif" lazyload alt="img"></td>
+</tr>
+</tbody></table>
+<ul>
+<li>所有排序算法对随机的序列排序</li>
+</ul>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">python output.py play     <br></code></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>排序前</th>
+<th>排序后</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><img src="http://cdn.ohheng.cn/202406121809141.jpg" srcset="/img/loading.gif" lazyload alt="img"></td>
+<td><img src="http://cdn.ohheng.cn/202406121812496.jpg" srcset="/img/loading.gif" lazyload alt="img"></td>
+</tr>
+</tbody></table>
+<h2 id="4、测试与分析"><a href="#4、测试与分析" class="headerlink" title="4、测试与分析"></a>4、测试与分析</h2><table>
+<thead>
+<tr>
+<th><strong>算法名称</strong></th>
+<th><strong>时间复杂度（平均）</strong></th>
+<th><strong>时间复杂度（最坏）</strong></th>
+<th><strong>空间复杂度</strong></th>
+<th><strong>稳定性</strong></th>
+<th><strong>适用场景</strong></th>
+<th><strong>示例数据集表现</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>冒泡排序</strong></td>
+<td>O(n^2)</td>
+<td>O(n^2)</td>
+<td>O(1)</td>
+<td>稳定</td>
+<td>小规模数据或部分排序</td>
+<td>慢</td>
+</tr>
+<tr>
+<td><strong>堆排序</strong></td>
+<td>O(n log n)</td>
+<td>O(n log n)</td>
+<td>O(1)</td>
+<td>不稳定</td>
+<td>大规模数据集</td>
+<td>快</td>
+</tr>
+<tr>
+<td><strong>归并排序</strong></td>
+<td>O(n log n)</td>
+<td>O(n log n)</td>
+<td>O(n)</td>
+<td>稳定</td>
+<td>适合大数据量，可并行处理</td>
+<td>快</td>
+</tr>
+<tr>
+<td><strong>直接插入排序</strong></td>
+<td>O(n^2)</td>
+<td>O(n^2)</td>
+<td>O(1)</td>
+<td>稳定</td>
+<td>小规模数据集或初始有序数据</td>
+<td>较慢</td>
+</tr>
+<tr>
+<td><strong>选择排序</strong></td>
+<td>O(n^2)</td>
+<td>O(n^2)</td>
+<td>O(1)</td>
+<td>不稳定</td>
+<td>实时添加元素的场景</td>
+<td>慢</td>
+</tr>
+<tr>
+<td><strong>快速排序</strong></td>
+<td>O(n log n)</td>
+<td>O(n^2)</td>
+<td>O(log n)</td>
+<td>不稳定</td>
+<td>大规模数据集</td>
+<td>快（平均情况）</td>
+</tr>
+</tbody></table>
+<p>排序算法的选择取决于数据规模、内存限制以及是否需要算法稳定性。对于小数据集，简单算法如冒泡排序或直接插入排序足够有效。对于大数据集，更高效的算法如堆排序、归并排序和快速排序是更好的选择。归并排序虽然内存需求较高，但提供了稳定性和并行处理能力。快速排序在平均情况下速度最快，但在最坏情况下性能会下降。总体而言，算法的选择需要平衡时间效率、空间消耗和稳定性。</p>
+<h2 id="5、结论与心得"><a href="#5、结论与心得" class="headerlink" title="5、结论与心得"></a>5、结论与心得</h2><p>在这次课程设计中，我深刻体会到了理论与实践相结合的重要性。项目的核心是开发一个排序算法可视化工具，这不仅让我对冒泡排序、快速排序等经典算法有了更深入的理解，也锻炼了我的编程实践能力。在实现过程中，我遇到了不少挑战，比如动画的流畅性、性能优化以及用户交互设计等。为了解决这些问题，我查阅了大量资料，学习了新的技术和方法，这个过程虽然充满挑战，但也让我获得了巨大的成就感。</p>
+<p>我学会了如何合理规划时间，将大目标分解为小任务，并一步步地完成它们。在调试代码时，我意识到了代码规范和模块化设计的重要性，这有助于快速定位并解决问题。此外，我也认识到了团队协作的力量，与队友的有效沟通和分工合作是项目成功的关键。</p>
+<p>尽管项目中有许多困难，但通过不懈努力，我克服了这些障碍，并从中学到了很多。例如，我学会了如何使用Matplotlib库来制作动画，以及如何通过命令行参数让用户自定义排序算法和数据类型。这些技能对我未来的学习和工作都将产生积极的影响。</p>
+<p>遗憾的是，由于时间限制，项目中仍有一些想法未能实现，比如增加更多排序算法的展示，以及进一步优化用户界面。这些未完成的部分也给了我未来努力的方向。我计划在接下来的时间里，继续完善这个项目，探索更多的功能和优化。</p>
+<p>总的来说，这次课程设计是一次宝贵的学习经历。它不仅提升了我的技术能力，还锻炼了我的问题解决能力和创新思维。我相信，通过这次项目的经验，我将更加自信地面对将来的挑战，并不断追求卓越。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E9%A1%B9%E7%9B%AE/" class="category-chain-item">项目</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/python/" class="print-no-link">#python</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>排序算法的可视化</div>
+      <div>http://example.com/2024/06/12/(项目)排序算法的可视化/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Ohheng</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年6月12日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/06/12/(%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95)%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="基础数据结构">
+                        <span class="hidden-mobile">基础数据结构</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      豫ICP备2024065827号-1
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>粤公网安备44040402000235号</span>
+        </a>
+      </span>
+    
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
