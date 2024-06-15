@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>单词打字机 - Typing Word</title>
+    <link href="/2024/06/15/(%E9%A1%B9%E7%9B%AE)%E5%8D%95%E8%AF%8D%E6%89%93%E5%AD%97%E6%9C%BA/"/>
+    <url>/2024/06/15/(%E9%A1%B9%E7%9B%AE)%E5%8D%95%E8%AF%8D%E6%89%93%E5%AD%97%E6%9C%BA/</url>
+    
+    <content type="html"><![CDATA[<h1 align="center">  Typing Word</h1><p align="center">  可在网页上使用的背单词软件</p><h2 id="📸-在线访问"><a href="#📸-在线访问" class="headerlink" title="📸 在线访问"></a>📸 在线访问</h2><p><a href="http://word.ohheng.cn/">http://word.ohheng.cn/</a></p><h2 id="🛠-功能列表"><a href="#🛠-功能列表" class="headerlink" title="🛠 功能列表"></a>🛠 功能列表</h2><h3 id="背单词"><a href="#背单词" class="headerlink" title="背单词"></a>背单词</h3><p>可以选择记忆或默写单词，提供了音标显示、发音功能（均可选美音、英音）、错误统计 </p><h3 id="背文章"><a href="#背文章" class="headerlink" title="背文章"></a>背文章</h3><p>内置经典教材书籍，可以练习和背诵文章，逐句输入，自动发音。也可以自行添加、导入文章，提供一键翻译、译文对照功能</p><h3 id="生词本、错词本、简单词"><a href="#生词本、错词本、简单词" class="headerlink" title="生词本、错词本、简单词"></a>生词本、错词本、简单词</h3><p>默写单词时输入错误会自动添加到错词本，以便后续复习。也可以添加到简单词，之后再遇到这个词便会自动跳过，同时也可以将其添加到生词本中，以便巩固复习</p><h3 id="默写模式"><a href="#默写模式" class="headerlink" title="默写模式"></a>默写模式</h3><p>在用户完成一个章节的练习后，如果有错误词，那么会重复练习错误词，直到没有错误词为止。完成之后弹出选项可选择默写本章、重复本章、下一章</p><h3 id="词库"><a href="#词库" class="headerlink" title="词库"></a>词库</h3><p>内置了常用的 CET-4 、CET-6 、GMAT 、GRE 、IELTS 、SAT 、TOEFL 、考研英语、专业四级英语、专业八级英语，也有程序员常见英语单词以及多种编程语言<br>API 等词库。 尽可能满足大部分用户对背单词的需求，也非常欢迎社区贡献更多的词库。</p><h2 id="📕-词库列表"><a href="#📕-词库列表" class="headerlink" title="📕 词库列表"></a>📕 词库列表</h2><ul><li>CET-4、CET-6、GMAT、GRE、IELTS、SAT、TOEFL、BEC</li><li>考研英语、专业四级英语、专业八级英语、商务英语</li><li>Coder Dict 程序员常用词</li><li>高考、中考、人教版英语 3-9 年级</li><li>王陆雅思王听力语料库 </li><li>日语常见词、N1 ～ N5</li></ul><h2 id="📗-API-词库"><a href="#📗-API-词库" class="headerlink" title="📗 API 词库"></a>📗 API 词库</h2><ul><li>JavaScript API、Node.js API、Java API、Linux Command、C#: List API</li></ul><p>词库均来源于(除文章以外)：<a href="https://github.com/RealKai42/qwerty-learner/">qwerty-learner</a></p><p>如果您需要背诵其他词库，欢迎在 Issue 中提出</p><h2 id="🎙-功能与建议"><a href="#🎙-功能与建议" class="headerlink" title="🎙 功能与建议"></a>🎙 功能与建议</h2><p>目前项目处于开发初期，新功能正在持续添加中，如果你对软件有任何功能与建议，欢迎在 Issues 中提出<br>如果你也喜欢本软件的设计思想，欢迎提交 pr，非常感谢你对我们的支持！</p><h3 id="灵感来源"><a href="#灵感来源" class="headerlink" title="灵感来源"></a>灵感来源</h3><p><a href="https://github.com/RealKai42/qwerty-learner/">qwerty-learner</a> 很喜欢作者的这个项目，但是它没有背单词所必备的 <strong>生词本、错词本、简单词</strong> 的功能，可能是作者反复强调和提醒这个项目是“<strong>为键盘工作者设计的单词记忆与英语肌肉记忆锻炼软件</strong>”而不是一个“<strong>背单词</strong>”的软件吧，尽管绝大多数用户都是用它来背单词😂😂😂。</p><p>本项目参考其思路使用 Vue 重写了，并添加了 <strong>生词本、错词本、简单词</strong> 、 <strong>文章练习</strong> 等功能 </p>]]></content>
+    
+    
+    <categories>
+      
+      <category>项目</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Vue</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>图书管理系统</title>
     <link href="/2024/06/12/(%E9%A1%B9%E7%9B%AE)%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/"/>
     <url>/2024/06/12/(%E9%A1%B9%E7%9B%AE)%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</url>
@@ -20,11 +45,11 @@
     
     <tags>
       
+      <tag>Vue</tag>
+      
       <tag>Java</tag>
       
       <tag>SpringBoot</tag>
-      
-      <tag>Vue</tag>
       
     </tags>
     
